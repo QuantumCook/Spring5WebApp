@@ -15,14 +15,18 @@ public class Publisher {
     private String addressLineOne;
     private String city;
     private String state;
-    private Long zip;
+    private String zip;
 
-    public Publisher(String name, String addressLineOne, String city, String state, Long zip) {
+    public Publisher(String name, String addressLineOne, String city, String state, String zip) {
         this.name = name;
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.state = state;
         this.zip = zip;
+    }
+
+    public Publisher() {
+
     }
 
     public String getName() {
@@ -57,11 +61,11 @@ public class Publisher {
         this.state = state;
     }
 
-    public Long getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(Long zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 

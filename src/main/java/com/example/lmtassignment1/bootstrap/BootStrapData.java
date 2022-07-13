@@ -2,8 +2,10 @@ package com.example.lmtassignment1.bootstrap;
 
 import com.example.lmtassignment1.domain.Author;
 import com.example.lmtassignment1.domain.Book;
+import com.example.lmtassignment1.domain.Publisher;
 import com.example.lmtassignment1.repositories.AuthorRepository;
 import com.example.lmtassignment1.repositories.BookRepository;
+import com.example.lmtassignment1.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +15,12 @@ public class BootStrapData implements CommandLineRunner {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    private final PublisherRepository publisherRepository;
+
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -38,5 +43,11 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Books: " + bookRepository.count());
+
+        Publisher penguin = new Publisher("Penguin", "10001 Broadway", "New York", "NY", "101561");
+
+        publisherRepository.save(penguin);
+
+        System.out.println("publishers: " + publisherRepository.count());
     }
 }
